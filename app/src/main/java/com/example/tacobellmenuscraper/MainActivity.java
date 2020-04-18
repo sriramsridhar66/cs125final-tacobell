@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Menu menu = new Menu();
                 try {
-                    menu.createMenuMap();
+                    menu.createMenu();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

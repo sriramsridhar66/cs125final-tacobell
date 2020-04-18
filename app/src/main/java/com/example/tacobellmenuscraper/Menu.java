@@ -14,7 +14,7 @@ import java.util.Map;
 public class Menu {
     private Map<String, Double> menuMap = new HashMap<>();
 
-    public void createMenuMap() throws IOException {
+    public void createMenu() throws IOException {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
