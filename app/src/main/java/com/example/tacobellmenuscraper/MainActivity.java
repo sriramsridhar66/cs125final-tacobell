@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button loadMenuButton = findViewById(R.id.loadMenu);
+        Button loadMenuButton = findViewById(R.id.start);
         loadMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
