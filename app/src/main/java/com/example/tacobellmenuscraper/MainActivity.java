@@ -1,12 +1,13 @@
 package com.example.tacobellmenuscraper;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import java.io.IOException;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,16 +15,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button loadMenuButton = findViewById(R.id.start);
-        loadMenuButton.setOnClickListener(new View.OnClickListener() {
+        Button startButton = findViewById(R.id.startButton);
+        final ImageView imageView = findViewById(R.id.logoImage);
+
+        final ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, imageView, "tacoBellLogo");
+
+        startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Menu menu = new Menu();
-                try {
-                    menu.createMenu();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                Intent intent = new Intent(view.getContext(), QuestionsPages.class);
+                startActivity(intent, options.toBundle());
             }
         });
     }
