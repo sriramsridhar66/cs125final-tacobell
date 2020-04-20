@@ -1,5 +1,6 @@
 package com.example.tacobellmenuscraper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,22 +21,38 @@ public class QuestionsPages extends AppCompatActivity {
         getMoney(whatToInput);
     }
 
-    private void getMoney(TextView whatToInput) {
+    private void getMoney(final TextView whatToInput) {
         whatToInput.setText("Enter the amount of money you will be spending in Taco Bell today.");
         final EditText input = findViewById(R.id.optionsInput);
-        Button nextButton = findViewById(R.id.nextButton);
+        final Button nextButton = findViewById(R.id.nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String temp = input.getText().toString();
                 double value = Double.parseDouble(temp);
-                return;
+                whatToInput.setText(" ");
+                input.setText(" ");
+                getDollarMenu(whatToInput); //not sure if this is right
             }
         });
-        
+
     }
-    private void getDollarMenu(TextView whatToInput) {
-        whatToInput.setText("Enter the amount of dollar menu items you want.");
+    private void getDollarMenu(final TextView secondInput) {
+        secondInput.setText("Enter the amount of dollar menu items you want.");
+        final EditText input = findViewById(R.id.optionsInput);
+        final Button nextButton = findViewById(R.id.nextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String temp = input.getText().toString();
+                double dollarItems = Double.parseDouble(temp);
+//                if (dollarItems > getMoney()) { items must be less than what they entered previously
+//                    //ask them again
+//                }
+                secondInput.setText(" ");
+                input.setText(" ");
+            }
+        });
     }
 
 
