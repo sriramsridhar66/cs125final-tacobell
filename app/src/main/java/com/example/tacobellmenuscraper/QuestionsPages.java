@@ -1,6 +1,5 @@
 package com.example.tacobellmenuscraper;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,14 +20,19 @@ public class QuestionsPages extends AppCompatActivity {
         getMoney(whatToInput);
     }
 
-    private double getMoney(TextView whatToInput) {
+    private void getMoney(TextView whatToInput) {
         whatToInput.setText("Enter the amount of money you will be spending in Taco Bell today.");
-        EditText input = findViewById(R.id.optionsInput);
-        String temp = input.getText().toString();
-        double value = Double.parseDouble(temp);
-        return value;
-
-
+        final EditText input = findViewById(R.id.optionsInput);
+        Button nextButton = findViewById(R.id.nextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String temp = input.getText().toString();
+                double value = Double.parseDouble(temp);
+                return;
+            }
+        });
+        
     }
     private void getDollarMenu(TextView whatToInput) {
         whatToInput.setText("Enter the amount of dollar menu items you want.");
