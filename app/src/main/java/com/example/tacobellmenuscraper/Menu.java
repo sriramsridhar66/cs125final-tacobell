@@ -14,11 +14,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Menu {
+
+    private double moneyAmount;
+
+    private int dollarMenuNumber;
+
+    private boolean drinks;
+
     private Map<String, Double> menuMap = new HashMap<>();
 
     private String[] URLs = {"https://www.tacobell.com/food/tacos", "https://www.tacobell.com/food/burritos", "https://www.tacobell.com/food/quesadillas"};
 
-    public void createMenu() throws IOException {
+    public Menu(final double setMoneyAmount, final int setDollarMenuNumber, final boolean setDrinks) {
+        moneyAmount = setMoneyAmount;
+        dollarMenuNumber = setDollarMenuNumber;
+        drinks = setDrinks;
+    }
+
+    public void loadMenu() throws IOException {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -38,5 +51,9 @@ public class Menu {
 
     public Map<String, Double> getMenuMap() {
         return menuMap;
+    }
+
+    public Map<String, Double> getOrderMap(double money, int dollarMenu) {
+        return menuMap; //ADD LOGIC and return a new Map
     }
 }

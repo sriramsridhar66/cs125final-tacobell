@@ -20,10 +20,13 @@
 
     <EditText
         android:id="@+id/optionsInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
         android:ems="10"
+        android:fontFamily="@font/lato"
+        android:gravity="center_horizontal"
         android:inputType="textPersonName"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,25 +37,66 @@
         android:id="@+id/whatToInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:fontFamily="@font/lato"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/optionsInput"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/drinksRadioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImage"
-        app:layout_constraintVertical_bias="0.7"
-        android:layout_centerVertical="true"/>
+        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
 
     <Button
         android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="419dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="160dp"
         android:fontFamily="@font/lato"
         android:text="Next"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionsInput"
-        app:layout_constraintVertical_bias="0.120000005" />
+        app:layout_constraintTop_toBottomOf="@+id/drinksRadioGroup"
+        app:layout_constraintVertical_bias="0.756" />
+
+    <TextView
+        android:id="@+id/badInputMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nextButton" />
+
+    <RadioGroup
+        android:id="@+id/drinksRadioGroup"
+        android:layout_width="139dp"
+        android:layout_height="82dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/optionsInput"
+        app:layout_constraintEnd_toEndOf="@+id/optionsInput"
+        app:layout_constraintStart_toStartOf="@+id/optionsInput"
+        app:layout_constraintTop_toTopOf="@+id/optionsInput">
+
+        <RadioButton
+            android:id="@+id/yesDrink"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/lato"
+            android:text="Yes"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/noDrink"
+            android:layout_width="147dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/lato"
+            android:text="No"
+            android:textSize="24sp" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
