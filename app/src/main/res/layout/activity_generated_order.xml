@@ -18,5 +18,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/taco_bell_logo" />
 
+    <TableLayout
+        android:id="@+id/orderTable"
+        android:layout_width="409dp"
+        android:layout_height="620dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImage"
+        app:layout_constraintVertical_bias="0.59000003">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tableHeaderItem"
+                android:layout_width="236dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/lato"
+                android:gravity="center_horizontal"
+                android:text="Item Name"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tableHeaderPrice"
+                android:layout_width="227dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/lato"
+                android:text="Price"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </TableRow>
+    </TableLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

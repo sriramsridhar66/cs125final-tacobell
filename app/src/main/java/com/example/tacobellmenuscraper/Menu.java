@@ -48,9 +48,6 @@ public class Menu {
                 menuMap.put(item[0].trim(), Double.valueOf(item[1].split(" ")[0].trim()));
             }
         }
-        for (HashMap.Entry<String, Double> entry : menuMap.entrySet()) {
-            System.out.println(entry.getKey() + " is $" + entry.getValue());
-        }
     }
 
 
@@ -59,13 +56,10 @@ public class Menu {
     }
 
 
-    public HashMap<String, Double> getOrderMap() {
+    public void sortMap() {
         menuMap = sortByAmount(menuMap);
-        System.out.println("SORTED MAP:");
-        for (HashMap.Entry<String, Double> entry : menuMap.entrySet()) {
-            System.out.println(entry.getKey() + " is $" + entry.getValue());
-        }
-        return menuMap; //ADD LOGIC and return a new Map
+        System.out.println("PRINTING MENU MAP AFTER SORT");
+        printMap(menuMap);
     }
 
 
@@ -90,27 +84,56 @@ public class Menu {
     }
 
 
-    private HashMap<String, Double> getDollarMenu() {
-        //if [dollarMenuNumber] is 0, return empty HashMap
-        //randomly remove 6 - [dollarMenuNumber] dollar menu items from sortedMap
-        return null;
+    public HashMap<String, Double> getDollarMenu() {
+        HashMap<String, Double> toReturn = new HashMap<>();
+        moneyAmount -= dollarMenuNumber;
+
+        if (dollarMenuNumber == 0) {
+            return toReturn;
+        }
+
+        //randomly get [dollarMenuNumber] dollar menu items
+        return toReturn;
     }
 
-    private HashMap<String, Double> getComboDrinks() {
+
+    public HashMap<String, Double> getComboDrinks() {
+        HashMap<String, Double> toReturn = new HashMap<>();
+
+        if (!drinks) {
+            return toReturn;
+        }
         //if drinks is false, return empty HashMap
         //if drinks is true, randomly return one combo
-        return null;
+        return toReturn;
     }
 
-    private HashMap<String, Double> getRegularItems() {
+
+    public HashMap<String, Double> getRegularItems() {
+        HashMap<String, Double> toReturn = new HashMap<>();
         //do logic to choose regular items
         //return as a HashMap
-        return null;
+        return toReturn;
     }
 
-    private HashMap<String, Double> getFreeItems() {
-        //return free items as a Map
-        //can use to test generated order activity layout since free items will always be in the generated order.
-        return null;
+
+    public HashMap<String, Double> getFreeItems() {
+        HashMap<String, Double> toReturn = new HashMap<>();
+
+        for (HashMap.Entry<String, Double> entry : menuMap.entrySet()) {
+            if (entry.getValue() == 0) {
+                toReturn.put(entry.getKey(), entry.getValue());
+            } else {
+                return toReturn;
+            }
+        }
+        return toReturn;
+    }
+
+
+    private void printMap(HashMap<String, Double> hashMap) {
+        for (HashMap.Entry<String, Double> entry : hashMap.entrySet()) {
+            System.out.println(entry.getKey() + " is $" + entry.getValue());
+        }
     }
 }
