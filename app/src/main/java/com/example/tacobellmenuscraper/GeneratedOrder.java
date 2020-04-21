@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
 public class GeneratedOrder extends AppCompatActivity {
 
     private Menu menu;
@@ -17,5 +19,12 @@ public class GeneratedOrder extends AppCompatActivity {
         Intent intent = getIntent();
         menu = new Menu(intent.getDoubleExtra("moneyAmount", 0),
                 intent.getIntExtra("dollarMenuNumber", 0), intent.getBooleanExtra("drinks", false));
+        try {
+            menu.loadMenu();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        menu.getOrderMap();
     }
 }

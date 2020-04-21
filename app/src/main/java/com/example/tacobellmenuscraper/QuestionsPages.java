@@ -81,7 +81,7 @@ public class QuestionsPages extends AppCompatActivity {
 
     private void getDollarMenu() {
         input.setText("");
-        whatToInput.setText("How many dollar menu items do you want?");
+        whatToInput.setText("How many dollar menu items do you want? (Up to 6)");
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +100,12 @@ public class QuestionsPages extends AppCompatActivity {
                 if (goNext && dollarMenuNumber > moneyAmount) {
                     badInputMessage.setVisibility(View.VISIBLE);
                     badInputMessage.setText("The number of dollar menu items cannot be more than you are spending! Please try again.");
+                    goNext = false;
+                }
+
+                if (goNext && dollarMenuNumber > 6) {
+                    badInputMessage.setVisibility(View.VISIBLE);
+                    badInputMessage.setText("There are only 6 dollar menu items! Please try again.");
                     goNext = false;
                 }
 
@@ -144,9 +150,6 @@ public class QuestionsPages extends AppCompatActivity {
                     intent.putExtra("dollarMenuNumber", dollarMenuNumber);
                     intent.putExtra("drinks", drinks);
                     startActivity(intent, options.toBundle());
-                    //create intent to start next activity
-                    //add menu object as an extra
-                    //start new intent/activity
                 }
             }
         });
