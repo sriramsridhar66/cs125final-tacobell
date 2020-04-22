@@ -1,13 +1,13 @@
 package com.example.tacobellmenuscraper;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
@@ -17,6 +17,7 @@ public class GeneratedOrder extends AppCompatActivity {
 
     private Menu menu;
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,52 +35,36 @@ public class GeneratedOrder extends AppCompatActivity {
         loadUI();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void loadUI() {
         menu.sortMap();
         addToTable(menu.getFreeItems());
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void addToTable(HashMap<String, Double> hashMap) {
-        TableLayout table = findViewById(R.id.orderTable);
+        LinearLayout everythingLinear = findViewById(R.id.everythingLinear);
 
         for (HashMap.Entry<String, Double> entry : hashMap.entrySet()) {
-            TableRow itemRow = new TableRow(this);
+            LinearLayout itemLinear = new LinearLayout(this);
+            itemLinear.setOrientation(LinearLayout.VERTICAL);
+
+            LinearLayout innerItemLinear = new LinearLayout(this);
+            innerItemLinear.setOrientation(LinearLayout.HORIZONTAL);
+
             TextView item = new TextView(this);
-            TextView price = new TextView(this);
-
             item.setText(entry.getKey());
-            item.setGravity(View.TEXT_ALIGNMENT_CENTER);
-            item.setTextSize(18);
-            item.setTextColor(Color.BLACK);
-            itemRow.addView(item);
+            item.setGravity(1);
 
+            TextView price = new TextView(this);
             price.setText("$" + entry.getValue());
-            price.setGravity(View.TEXT_ALIGNMENT_CENTER);
-            price.setTextSize(18);
-            price.setTextColor(Color.BLACK);
-            itemRow.addView(price);
+            price.setGravity(0);
 
-            table.addView(itemRow);
+            innerItemLinear.addView(item);
+            innerItemLinear.addView(price);
+            itemLinear.addView(innerItemLinear);
+            everythingLinear.addView(itemLinear);
 
-            /*<TextView
-                android:id="@+id/tableHeaderItem"
-                android:layout_width="236dp"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/lato"
-                android:gravity="center_horizontal"
-                android:text="Item Name"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tableHeaderPrice"
-                android:layout_width="227dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/lato"
-                android:text="Price"
-                android:textSize="30sp"
-                android:textStyle="bold" />*/
 
         }
     }
