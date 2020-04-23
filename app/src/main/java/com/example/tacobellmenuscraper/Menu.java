@@ -91,7 +91,6 @@ public class Menu {
         if (dollarMenuNumber == 0) {
             return toReturn;
         }
-
         //randomly get [dollarMenuNumber] dollar menu items
         return toReturn;
     }

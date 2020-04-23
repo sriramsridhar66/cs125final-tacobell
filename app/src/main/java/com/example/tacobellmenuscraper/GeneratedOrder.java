@@ -38,7 +38,7 @@ public class GeneratedOrder extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void loadUI() {
         menu.sortMap();
-        addToTable(menu.getFreeItems());
+        addToTable(menu.getMenuMap());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -52,6 +52,9 @@ public class GeneratedOrder extends AppCompatActivity {
             LinearLayout innerItemLinear = new LinearLayout(this);
             innerItemLinear.setOrientation(LinearLayout.HORIZONTAL);
 
+
+
+
             TextView item = new TextView(this);
             item.setText(entry.getKey());
             item.setGravity(1);
@@ -60,10 +63,10 @@ public class GeneratedOrder extends AppCompatActivity {
             price.setText("$" + entry.getValue());
             price.setGravity(0);
 
-            innerItemLinear.addView(item);
-            innerItemLinear.addView(price);
-            itemLinear.addView(innerItemLinear);
-            everythingLinear.addView(itemLinear);
+            itemLinear.addView(item);
+            itemLinear.addView(price);
+            innerItemLinear.addView(itemLinear);
+            everythingLinear.addView(innerItemLinear);
 
 
         }
