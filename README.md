@@ -54,7 +54,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Not really sure what this is gonna do yet. Currently pulls the Taco Bell menu and prices from the website and prints to the Android Studio logcat.
+Creates a partially randomized Taco Bell order based on a few user inputs.
 
 
 ### Built With
@@ -74,8 +74,7 @@ lel
 <!-- ROADMAP -->
 ## Roadmap
 
-* Create a nice looking UI
-* Complete the logic
+* Complete logic to choose menu items.
 
 
 <!-- CONTACT -->
