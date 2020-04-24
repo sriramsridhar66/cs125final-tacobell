@@ -19,6 +19,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setLandingPage() {
+
+        //this is for testing the generated order page so we don't have to go thru the app each time
+        Button skipButton = findViewById(R.id.skipButton);
+        skipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), GeneratedOrder.class);
+                intent.putExtra("moneyAmount", 10);
+                intent.putExtra("dollarMenuNumber", 2);
+                intent.putExtra("drinks", true);
+
+                startActivity(intent);
+            }
+        });
         Button startButton = findViewById(R.id.startButton);
         final ImageView imageView = findViewById(R.id.logoImage);
 
