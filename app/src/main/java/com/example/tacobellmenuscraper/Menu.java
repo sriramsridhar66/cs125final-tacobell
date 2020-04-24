@@ -28,6 +28,8 @@ public class Menu {
 
     private String[] URLs = {"https://www.tacobell.com/food/tacos", "https://www.tacobell.com/food/burritos", "https://www.tacobell.com/food/quesadillas"};
 
+    private double total;
+
 
     public Menu(final double setMoneyAmount, final int setDollarMenuNumber, final boolean setDrinks) {
         moneyAmount = setMoneyAmount;
@@ -53,6 +55,10 @@ public class Menu {
 
     public HashMap<String, Double> getMenuMap() {
         return menuMap;
+    }
+
+    public double getTotal() {
+        return total;
     }
 
 

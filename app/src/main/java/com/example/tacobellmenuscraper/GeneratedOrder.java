@@ -12,8 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -44,10 +42,14 @@ public class GeneratedOrder extends AppCompatActivity {
     private void loadUI() {
         menu.sortMap();
         addToTable(menu.getFreeItems());
-        addToTable(menu.getMenuMap());
+        addToTable(menu.getComboDrinks());
+        addToTable(menu.getDollarMenu());
+        addToTable(menu.getRegularItems());
+        addToTable(menu.getMenuMap()); //remove once proper logic is created
 
         TextView totalPrice = findViewById(R.id.totalPrice);
-        totalPrice.setText("$[total]");
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        totalPrice.setText("$" + decimalFormat.format(menu.getTotal()));
 
     }
 
