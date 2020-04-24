@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //delete the above when done
+
         Button startButton = findViewById(R.id.startButton);
         final ImageView imageView = findViewById(R.id.logoImage);
 

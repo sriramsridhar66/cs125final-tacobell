@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -40,6 +44,10 @@ public class GeneratedOrder extends AppCompatActivity {
         menu.sortMap();
         addToTable(menu.getFreeItems());
         addToTable(menu.getMenuMap());
+
+        TextView totalPrice = findViewById(R.id.totalPrice);
+        totalPrice.setText("$[total]");
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -49,21 +57,21 @@ public class GeneratedOrder extends AppCompatActivity {
         for (HashMap.Entry<String, Double> entry : hashMap.entrySet()) {
             LinearLayout itemLinear = new LinearLayout(this);
             itemLinear.setOrientation(LinearLayout.HORIZONTAL);
+            itemLinear.setPadding(0, 10, 5, 10);
 
             TextView item = new TextView(this);
             item.setText(entry.getKey());
-            item.setGravity(1);
+            item.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,1));
+            item.setTextSize(25);
 
             TextView price = new TextView(this);
             price.setText("$" + entry.getValue());
-            price.setGravity(0);
+            price.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,0));
+            price.setTextSize(25);
 
             itemLinear.addView(item);
             itemLinear.addView(price);
             orderLayout.addView(itemLinear);
-            System.out.println("done");
-
-
         }
     }
 
