@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 public class GeneratedOrder extends AppCompatActivity {
@@ -54,6 +55,8 @@ public class GeneratedOrder extends AppCompatActivity {
     private void addToTable(HashMap<String, Double> hashMap) {
         LinearLayout orderLayout = findViewById(R.id.orderLayout);
 
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+
         for (HashMap.Entry<String, Double> entry : hashMap.entrySet()) {
             LinearLayout itemLinear = new LinearLayout(this);
             itemLinear.setOrientation(LinearLayout.HORIZONTAL);
@@ -65,7 +68,7 @@ public class GeneratedOrder extends AppCompatActivity {
             item.setTextSize(25);
 
             TextView price = new TextView(this);
-            price.setText("$" + entry.getValue());
+            price.setText("$" + decimalFormat.format(entry.getValue()));
             price.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,0));
             price.setTextSize(25);
 
