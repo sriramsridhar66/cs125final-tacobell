@@ -3,10 +3,8 @@ package com.example.tacobellmenuscraper;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -19,6 +17,8 @@ import java.util.HashMap;
 public class GeneratedOrder extends AppCompatActivity {
 
     private Menu menu;
+
+    private double total;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -42,14 +42,14 @@ public class GeneratedOrder extends AppCompatActivity {
     private void loadUI() {
         menu.sortMap();
         addToTable(menu.getFreeItems());
-        addToTable(menu.getComboDrinks());
+        //addToTable(menu.getComboDrinks());
         addToTable(menu.getDollarMenu());
         addToTable(menu.getRegularItems());
         addToTable(menu.getMenuMap()); //remove once proper logic is created
 
         TextView totalPrice = findViewById(R.id.totalPrice);
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
-        totalPrice.setText("$" + decimalFormat.format(menu.getTotal()));
+        totalPrice.setText("$" + decimalFormat.format(total));
 
     }
 
@@ -73,6 +73,7 @@ public class GeneratedOrder extends AppCompatActivity {
             price.setText("$" + decimalFormat.format(entry.getValue()));
             price.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,0));
             price.setTextSize(25);
+            total += entry.getValue();
 
             itemLinear.addView(item);
             itemLinear.addView(price);

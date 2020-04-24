@@ -15,6 +15,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class Menu {
 
@@ -27,8 +28,6 @@ public class Menu {
     private HashMap<String, Double> menuMap = new HashMap<>();
 
     private String[] URLs = {"https://www.tacobell.com/food/tacos", "https://www.tacobell.com/food/burritos", "https://www.tacobell.com/food/quesadillas"};
-
-    private double total;
 
 
     public Menu(final double setMoneyAmount, final int setDollarMenuNumber, final boolean setDrinks) {
@@ -55,10 +54,6 @@ public class Menu {
 
     public HashMap<String, Double> getMenuMap() {
         return menuMap;
-    }
-
-    public double getTotal() {
-        return total;
     }
 
 
@@ -91,6 +86,7 @@ public class Menu {
 
 
     public HashMap<String, Double> getDollarMenu() {
+        HashMap<String, Double> temp = new HashMap<>();
         HashMap<String, Double> toReturn = new HashMap<>();
         moneyAmount -= dollarMenuNumber;
 
@@ -103,13 +99,37 @@ public class Menu {
 
 
     public HashMap<String, Double> getComboDrinks() {
+        HashMap<String, Double> temp = new HashMap<>();
         HashMap<String, Double> toReturn = new HashMap<>();
 
         if (!drinks) {
-            return toReturn;
+            return temp;
         }
-        //if drinks is false, return empty HashMap
-        //if drinks is true, randomly return one combo
+
+        if (moneyAmount < 5.79) {
+            temp.put("Fountain Drink", 1.99);
+            return temp;
+        }
+
+        for (Map.Entry<String, Double> entry : menuMap.entrySet()) {
+            if (entry.getKey().contains("Combo")) {
+                temp.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        Random random = new Random();
+        int randomEntry = random.nextInt(temp.size());
+
+        Object[] itemNames = temp.keySet().toArray();
+        Object[] itemPrices = temp.values().toArray();
+
+        if ((Double) itemPrices[randomEntry] > moneyAmount) {
+            return getComboDrinks();
+        }
+
+        toReturn.put((String) itemNames[randomEntry], (Double) itemPrices[randomEntry]);
+        moneyAmount -= dollarMenuNumber;
+
         return toReturn;
     }
 
