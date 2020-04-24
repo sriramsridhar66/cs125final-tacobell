@@ -42,10 +42,10 @@ public class GeneratedOrder extends AppCompatActivity {
     private void loadUI() {
         menu.sortMap();
         addToTable(menu.getFreeItems());
-        //addToTable(menu.getComboDrinks());
+        addToTable(menu.getComboDrinks());
         addToTable(menu.getDollarMenu());
         addToTable(menu.getRegularItems());
-        addToTable(menu.getMenuMap()); //remove once proper logic is created
+        //addToTable(menu.getMenuMap()); //remove once proper logic is created
 
         TextView totalPrice = findViewById(R.id.totalPrice);
         DecimalFormat decimalFormat = new DecimalFormat("#.00");

@@ -8,6 +8,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -88,12 +89,42 @@ public class Menu {
     public HashMap<String, Double> getDollarMenu() {
         HashMap<String, Double> temp = new HashMap<>();
         HashMap<String, Double> toReturn = new HashMap<>();
-        moneyAmount -= dollarMenuNumber;
 
-        if (dollarMenuNumber == 0) {
+        if (dollarMenuNumber == 0 || moneyAmount < 1) {
             return toReturn;
         }
-        //randomly get [dollarMenuNumber] dollar menu items
+
+        for (Map.Entry<String, Double> entry : menuMap.entrySet()) {
+            if (entry.getValue() == 1.00) {
+                temp.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        ArrayList<Integer> chosen = new ArrayList<>(6);
+
+        Random random = new Random();
+
+        for (int i = 0; i < dollarMenuNumber; i++) {
+            int randomEntry = random.nextInt(temp.size());
+            if(chosen.contains(randomEntry)) {
+                i--;
+                continue;
+            }
+            chosen.add(randomEntry);
+        }
+
+        Object[] itemNames = temp.keySet().toArray();
+        Object[] itemPrices = temp.values().toArray();
+
+        for (int i = 0; i < dollarMenuNumber; i++) {
+            if (moneyAmount > (Double) itemPrices[i]) {
+                toReturn.put((String) itemNames[i], (Double) itemPrices[i]);
+                moneyAmount -= (Double) itemPrices[i];
+            } else {
+                return toReturn;
+            }
+        }
+
         return toReturn;
     }
 
@@ -102,7 +133,7 @@ public class Menu {
         HashMap<String, Double> temp = new HashMap<>();
         HashMap<String, Double> toReturn = new HashMap<>();
 
-        if (!drinks) {
+        if (!drinks || moneyAmount < 1.99) {
             return temp;
         }
 
@@ -128,16 +159,31 @@ public class Menu {
         }
 
         toReturn.put((String) itemNames[randomEntry], (Double) itemPrices[randomEntry]);
-        moneyAmount -= dollarMenuNumber;
+        moneyAmount -= (Double) itemPrices[randomEntry];
 
         return toReturn;
     }
 
 
     public HashMap<String, Double> getRegularItems() {
+        HashMap<String, Double> temp = new HashMap<>();
         HashMap<String, Double> toReturn = new HashMap<>();
-        //do logic to choose regular items
-        //return as a HashMap
+
+        for (Map.Entry<String, Double> entry : menuMap.entrySet()) {
+            if (!(entry.getValue() == 0) && !(entry.getKey().contains("Combo"))) {
+                temp.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+       for (Map.Entry<String, Double> entry : temp.entrySet()) {
+           if (moneyAmount > entry.getValue()) {
+               toReturn.put(entry.getKey(), entry.getValue());
+               moneyAmount -= entry.getValue();
+           } else {
+               break;
+           }
+       }
+
         return toReturn;
     }
 
