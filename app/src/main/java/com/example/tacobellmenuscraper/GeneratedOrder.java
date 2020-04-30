@@ -28,7 +28,8 @@ public class GeneratedOrder extends AppCompatActivity {
 
         Intent intent = getIntent();
         menu = new Menu(intent.getDoubleExtra("moneyAmount", 0),
-                intent.getIntExtra("dollarMenuNumber", 0), intent.getBooleanExtra("drinks", false));
+                intent.getIntExtra("dollarMenuNumber", 0), intent.getBooleanExtra("drinks", false),
+                intent.getBooleanExtra("variety", false));
         try {
             menu.loadMenu();
         } catch (IOException e) {

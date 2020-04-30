@@ -26,15 +26,18 @@ public class Menu {
 
     private boolean drinks;
 
+    private boolean variety;
+
     private HashMap<String, Double> menuMap = new HashMap<>();
 
     private String[] URLs = {"https://www.tacobell.com/food/tacos", "https://www.tacobell.com/food/burritos", "https://www.tacobell.com/food/quesadillas"};
 
 
-    public Menu(final double setMoneyAmount, final int setDollarMenuNumber, final boolean setDrinks) {
+    public Menu(final double setMoneyAmount, final int setDollarMenuNumber, final boolean setDrinks, final boolean setVariety) {
         moneyAmount = setMoneyAmount;
         dollarMenuNumber = setDollarMenuNumber;
         drinks = setDrinks;
+        variety = setVariety;
     }
 
 

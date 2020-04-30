@@ -29,6 +29,8 @@ public class QuestionsPages extends AppCompatActivity {
 
     private boolean drinks;
 
+    private boolean variety;
+
     private boolean goNext = true;
 
 
@@ -68,9 +70,11 @@ public class QuestionsPages extends AppCompatActivity {
                     goNext = false;
                 }
 
+                TextView dollarSign = findViewById(R.id.dollarSign);
+                dollarSign.setVisibility(View.GONE);
                 if (goNext) {
                     badInputMessage.setVisibility(View.INVISIBLE);
-                    getDollarMenu();
+                    getOrderMethod();
                 } else {
                     getMoney();
                 }
@@ -78,8 +82,56 @@ public class QuestionsPages extends AppCompatActivity {
         });
     }
 
+    private void getOrderMethod() {
+        input.setVisibility(View.GONE);
+
+        final RadioGroup radioGroup = findViewById(R.id.drinksRadioGroup);
+        radioGroup.setVisibility(View.VISIBLE);
+
+        final RadioButton yesButton = findViewById(R.id.yesButton);
+        final RadioButton noButton = findViewById(R.id.noButton);
+
+        yesButton.setText("Variety");
+        noButton.setText("Most Items");
+        whatToInput.setText("Do want a random selection of items or the most items for the amount?");
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                if (selectedId == findViewById(R.id.yesButton).getId()) {
+                    variety = true;
+                    goNext = true;
+                } else if (selectedId == findViewById(R.id.noButton).getId()) {
+                    variety = false;
+                    goNext = true;
+                } else {
+                    goNext = false;
+                }
+
+                yesButton.setChecked(false);
+                noButton.setChecked(false);
+
+                if (goNext && variety) {
+                    getDrinks();
+                } else if (goNext) {
+                    getDollarMenu();
+                } else {
+                    getOrderMethod();
+                }
+            }
+        });
+    }
+
 
     private void getDollarMenu() {
+        RadioGroup radioGroup = findViewById(R.id.drinksRadioGroup);
+        radioGroup.setVisibility(View.GONE);
+
+        input.setVisibility(View.VISIBLE);
+        whatToInput.setVisibility(View.VISIBLE);
+
         input.setText("");
         whatToInput.setText("How many dollar menu items do you want? (Up to 6)");
 
@@ -110,8 +162,6 @@ public class QuestionsPages extends AppCompatActivity {
                 }
 
                 if (goNext) {
-                    badInputMessage.setVisibility(View.GONE);
-                    input.setVisibility(View.GONE);
                     getDrinks();
                 } else {
                     getDollarMenu();
@@ -121,12 +171,20 @@ public class QuestionsPages extends AppCompatActivity {
     }
 
     private void getDrinks() {
+        badInputMessage.setVisibility(View.GONE);
+        input.setVisibility(View.GONE);
+
         final RadioGroup radioGroup = findViewById(R.id.drinksRadioGroup);
         radioGroup.setVisibility(View.VISIBLE);
 
         final ImageView imageView = findViewById(R.id.logoImage);
         final ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, imageView, "tacoBellLogo");
 
+        final RadioButton yesButton = findViewById(R.id.yesButton);
+        final RadioButton noButton = findViewById(R.id.noButton);
+
+        yesButton.setText("Yes");
+        noButton.setText("No");
         whatToInput.setText("Do you want a fountain drink?");
 
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -134,10 +192,10 @@ public class QuestionsPages extends AppCompatActivity {
             public void onClick(View view) {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
 
-                if (selectedId == findViewById(R.id.yesDrink).getId()) {
+                if (selectedId == findViewById(R.id.yesButton).getId()) {
                     drinks = true;
                     goNext = true;
-                } else if (selectedId == findViewById(R.id.noDrink).getId()) {
+                } else if (selectedId == findViewById(R.id.noButton).getId()) {
                     drinks = false;
                     goNext = true;
                 } else {
@@ -149,6 +207,7 @@ public class QuestionsPages extends AppCompatActivity {
                     intent.putExtra("moneyAmount", moneyAmount);
                     intent.putExtra("dollarMenuNumber", dollarMenuNumber);
                     intent.putExtra("drinks", drinks);
+                    intent.putExtra("variety", variety);
                     startActivity(intent, options.toBundle());
                 }
             }

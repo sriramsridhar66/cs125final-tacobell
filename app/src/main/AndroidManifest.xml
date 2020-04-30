@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:icon="@drawable/logo_icon"
         android:label="TB Order"
-        android:roundIcon="@drawable/logo_icon"
+        android:roundIcon="@drawable/logo_round_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
