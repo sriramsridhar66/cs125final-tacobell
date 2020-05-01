@@ -3,7 +3,9 @@ package com.example.tacobellmenuscraper;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -51,6 +53,16 @@ public class GeneratedOrder extends AppCompatActivity {
         TextView totalPrice = findViewById(R.id.totalPrice);
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
         totalPrice.setText("$" + decimalFormat.format(total));
+
+        Button resetButton = findViewById(R.id.resetButton);
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
 
     }
 

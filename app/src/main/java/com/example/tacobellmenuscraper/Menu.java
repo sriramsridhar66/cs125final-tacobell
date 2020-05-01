@@ -178,14 +178,27 @@ public class Menu {
             }
         }
 
-       for (Map.Entry<String, Double> entry : temp.entrySet()) {
-           if (moneyAmount > entry.getValue()) {
-               toReturn.put(entry.getKey(), entry.getValue());
-               moneyAmount -= entry.getValue();
-           } else {
-               break;
-           }
-       }
+        if (variety) {
+            Random random = new Random();
+
+            for (int counter = 0; counter < 30; counter++) {
+                int randomEntry = random.nextInt(temp.size());
+                Object[] itemNames = temp.keySet().toArray();
+                Object[] itemPrices = temp.values().toArray();
+                if (moneyAmount > (Double) itemPrices[randomEntry]) {
+                    toReturn.put((String) itemNames[randomEntry], (Double) itemPrices[randomEntry]);
+                    moneyAmount -= (Double) itemPrices[randomEntry];
+                }
+                temp.remove(itemNames[randomEntry]);
+            }
+        } else {
+            for (Map.Entry<String, Double> entry : temp.entrySet()) {
+                if (moneyAmount > entry.getValue() && entry.getValue() != 1) {
+                    toReturn.put(entry.getKey(), entry.getValue());
+                    moneyAmount -= entry.getValue();
+                }
+            }
+        }
 
         return toReturn;
     }
