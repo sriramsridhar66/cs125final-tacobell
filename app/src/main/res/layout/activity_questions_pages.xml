@@ -41,6 +41,7 @@
         android:fontFamily="@font/lato"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/drinksRadioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
