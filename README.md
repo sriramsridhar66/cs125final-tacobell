@@ -20,10 +20,10 @@
     <img src="app/src/main/res/drawable/logo_round_icon.jpeg" width="250" height="250">
   </a>
 
-  <h3 align="center">TACO BELL Order Generator</h3>
+  <h3 align="center">Taco Bell Order Generator</h3>
 
   <p align="center">
-    taco
+    Not sure what to choose on the menu? Use the Taco Bell Order Generator to create an order for you based on a few questions.
     <br />
     <a href="https://github.com/sriramsridhar66/cs125final_tacobell"><strong>Explore the docs »</strong></a>
     <br />
@@ -62,12 +62,6 @@ Creates a partially randomized Taco Bell order based on a few user inputs.
 * [Java](https://docs.oracle.com/javase/8/docs/technotes/guides/language/index.html)
 * [Android Studio](https://developer.android.com/studio)
 * [Jsoup](https://jsoup.org/)
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-lel
 
 
 
