@@ -21,6 +21,8 @@
   </a>
 
   <h3 align="center">Taco Bell Order Generator</h3>
+  
+  <p align="center">
     ·
     <a href="https://github.com/sriramsridhar66/cs125final_tacobell/issues">Report Bug</a>
     ·
