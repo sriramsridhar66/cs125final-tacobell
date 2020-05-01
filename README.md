@@ -17,7 +17,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/sriramsridhar66/cs125final_tacobell">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="app/src/main/res/drawable/logo_round_icon.jpeg" width="250" height="250">
   </a>
 
   <h3 align="center">TACO BELL APP [NAME NOT DECIDED]</h3>
