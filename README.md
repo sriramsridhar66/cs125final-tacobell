@@ -24,11 +24,6 @@
 
   <p align="center">
     Not sure what to choose on the menu? Use the Taco Bell Order Generator to create an order for you based on a few questions.
-    <br />
-    <a href="https://github.com/sriramsridhar66/cs125final_tacobell"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/sriramsridhar66/cs125final_tacobell">View Demo</a>
     ·
     <a href="https://github.com/sriramsridhar66/cs125final_tacobell/issues">Report Bug</a>
     ·
