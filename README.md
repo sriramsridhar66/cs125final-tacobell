@@ -72,7 +72,6 @@ Creates a partially randomized Taco Bell order based on a few user inputs.
 * Sriram Sridhar - srirams5@illinois.edu
 * Keesan Patel - don't
 
-Project Link: [https://github.com/sriramsridhar66/cs125final_tacobell](https://github.com/sriramsridhar66/cs125final_tacobell)
 
 
 
