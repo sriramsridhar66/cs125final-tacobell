@@ -21,9 +21,6 @@
   </a>
 
   <h3 align="center">Taco Bell Order Generator</h3>
-
-  <p align="center">
-    Not sure what to choose on the menu? Use the Taco Bell Order Generator to create an order for you based on a few questions.
     ·
     <a href="https://github.com/sriramsridhar66/cs125final_tacobell/issues">Report Bug</a>
     ·
@@ -46,8 +43,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 Creates a partially randomized Taco Bell order based on a few user inputs.
 
