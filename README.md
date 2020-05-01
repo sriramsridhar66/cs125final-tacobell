@@ -1,4 +1,4 @@
-# CS125 Final - TACO BELL APP
+# CS125 Final - Taco Bell Order Generator
 <!--
 *** Thanks for checking out this README Template. If you have a suggestion that would
 *** make this better, please fork the repo and create a pull request or simply open
@@ -20,7 +20,7 @@
     <img src="app/src/main/res/drawable/logo_round_icon.jpeg" width="250" height="250">
   </a>
 
-  <h3 align="center">TACO BELL APP [NAME NOT DECIDED]</h3>
+  <h3 align="center">TACO BELL Order Generator</h3>
 
   <p align="center">
     taco
