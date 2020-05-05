@@ -60,7 +60,7 @@ Creates a partially randomized Taco Bell order based on a few user inputs.
 <!-- ROADMAP -->
 ## Roadmap
 
-* Complete logic to choose menu items.
+* Finished objectives planned for final project submission.
 
 
 <!-- CONTACT -->
