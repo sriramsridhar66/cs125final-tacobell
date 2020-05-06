@@ -47,6 +47,7 @@
 ## About The Project
 
 Creates a partially randomized Taco Bell order based on a few user inputs.
+* [Project Presentation Video](https://www.youtube.com/watch?v=xkTqIrmtdy8&t=2s)
 
 
 ### Built With
